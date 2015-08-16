@@ -6,43 +6,50 @@ using System.Threading.Tasks;
 
 namespace WOX_Info.Items
 {
-    interface IModifier
+    public interface IModifier
     {
         string Name { get; }
     }
 
-    interface IWeaponModifier : IModifier
+    public interface IWeaponModifier : IModifier
     {
         void Apply();
     }
 
-    interface IArmorModifier : IModifier
+    public interface IArmorModifier : IModifier
     {
         Armor Apply(Armor armor);
     }
 
-    interface IMiscellaneousModifier : IModifier
+    public interface IMiscellaneousModifier : IModifier
     {
         void Apply();
     }
 
-
-
-    class Metal : IArmorModifier, IWeaponModifier
+    public class Metal : IArmorModifier, IWeaponModifier
     {
+        public enum MetalType
+        {
+            Common,
+            Rare,
+            Precious
+        }
+
         public string Name { get; private set; }
         public int ToHit { get; private set; }
         public int Damage { get; private set; }
         public int ArmorClass { get; private set; }
         public double CostMultiplier { get; private set; }
+        public MetalType Type { get; private set; }
 
-        public Metal(string name, int to_hit, int damage, int ac, double costmod)
+        public Metal(string name, int to_hit, int damage, int ac, double costmod, MetalType type)
         {
             Name = name;
             ToHit = to_hit;
             Damage = damage;
             ArmorClass = ac;
             CostMultiplier = costmod;
+            Type = type;
         }
 
         void IWeaponModifier.Apply()
@@ -55,10 +62,9 @@ namespace WOX_Info.Items
             Armor new_armor = new Armor(armor);
             new_armor.Name = Name + " " + armor.Name;
             new_armor.ArmorClass = armor.ArmorClass + ArmorClass;
+            new_armor.Cost = armor.Cost * CostMultiplier;
 
             return new_armor;
         }
     }
-
-
 }

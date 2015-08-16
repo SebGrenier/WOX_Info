@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Classes.cs" />
+    <Compile Include="ContentDatabase.cs" />
     <Compile Include="Items\Armor.cs" />
+    <Compile Include="Items\BaseItem.cs" />
     <Compile Include="Items\Modifiers.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>

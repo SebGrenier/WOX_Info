@@ -7,28 +7,7 @@ using WOX_Info.Classes;
 
 namespace WOX_Info.Items
 {
-    class BaseItem
-    {
-        public string Name { get; set; }
-        public double Cost { get; set; }
-        public ClassType AllowedClasses { get; set; }
-
-        public BaseItem(string name, double cost, ClassType allowed_classes)
-        {
-            Name = name;
-            Cost = cost;
-            AllowedClasses = allowed_classes;
-        }
-
-        public BaseItem(BaseItem bi)
-        {
-            Name = string.Copy(bi.Name);
-            Cost = bi.Cost;
-            AllowedClasses = bi.AllowedClasses;
-        }
-    }
-
-    class Armor : BaseItem
+    public class Armor : BaseItem
     {
         public int ArmorClass { get; set; }
 
