@@ -103,6 +103,22 @@ namespace WOX_Info
                 new Weapon("Cudgel", new DiceType(1, 6), 15, EquipType.Onehand, ClassType.All ^ ClassType.Sorcerer),
                 new Weapon("Maul", new DiceType(1, 8), 30, EquipType.Onehand, ClassType.All ^ ClassType.Sorcerer),
                 new Weapon("Spear", new DiceType(1, 9), 15, EquipType.Onehand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric)),
+                new Weapon("Bardiche", new DiceType(4, 4), 200, EquipType.Twohand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric | ClassType.Druid)),
+                new Weapon("Glaive", new DiceType(4, 3), 80, EquipType.Twohand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric | ClassType.Druid)),
+                new Weapon("Halberd", new DiceType(3, 6), 250, EquipType.Twohand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric | ClassType.Druid)),
+                new Weapon("Pike", new DiceType(2, 8), 150, EquipType.Twohand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric | ClassType.Druid)),
+                new Weapon("Flamberge", new DiceType(4, 5), 400, EquipType.Twohand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric | ClassType.Druid | ClassType.Ninja | ClassType.Barbarian | ClassType.Robber)),
+                new Weapon("Trident", new DiceType(2, 6), 100, EquipType.Twohand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric | ClassType.Druid)),
+                new Weapon("Staff", new DiceType(2, 4), 40, EquipType.Twohand, ClassType.All),
+                new Weapon("Hammer", new DiceType(2, 5), 120, EquipType.Twohand, ClassType.All ^ ClassType.Sorcerer),
+                new Weapon("Naginata", new DiceType(5, 3), 300, EquipType.Twohand, ClassType.Knight | ClassType.Ninja),
+                new Weapon("Battle Axe", new DiceType(3, 5), 100, EquipType.Twohand, noClDrNS),
+                new Weapon("Grand Axe", new DiceType(3, 6), 200, EquipType.Twohand, noClDrNS),
+                new Weapon("Great Axe", new DiceType(3, 7), 100, EquipType.Twohand, noClDrNS),
+                new Weapon("Short Bow", new DiceType(3, 2), 25, EquipType.OneHandMissile, ClassType.All ^ (ClassType.Cleric | ClassType.Sorcerer | ClassType.Druid)),
+                new Weapon("Long Bow", new DiceType(5, 2), 100, EquipType.OneHandMissile, ClassType.All ^ (ClassType.Cleric | ClassType.Sorcerer | ClassType.Druid)),
+                new Weapon("Crossbow", new DiceType(4, 2), 50, EquipType.OneHandMissile, ClassType.All ^ (ClassType.Cleric | ClassType.Sorcerer | ClassType.Druid)),
+                new Weapon("Sling", new DiceType(2, 2), 15, EquipType.OneHandMissile, ClassType.All ^ (ClassType.Cleric | ClassType.Sorcerer | ClassType.Druid))
             };
             WOXBaseItems.AddRange(weapons);
 
