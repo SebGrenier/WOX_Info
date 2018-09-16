@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WOX_Info.Classes;
+﻿using WOX_Info.Classes;
 
 namespace WOX_Info.Items
 {

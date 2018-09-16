@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WOX_Info.Items
 {
@@ -35,17 +31,17 @@ namespace WOX_Info.Items
             Precious
         }
 
-        public string Name { get; private set; }
-        public int ToHit { get; private set; }
-        public int Damage { get; private set; }
-        public int ArmorClass { get; private set; }
-        public double CostMultiplier { get; private set; }
-        public MetalType Type { get; private set; }
+        public string Name { get; }
+        public int ToHit { get; }
+        public int Damage { get; }
+        public int ArmorClass { get; }
+        public double CostMultiplier { get; }
+        public MetalType Type { get; }
 
-        public Metal(string name, int to_hit, int damage, int ac, double costmod, MetalType type)
+        public Metal(string name, int toHit, int damage, int ac, double costmod, MetalType type)
         {
             Name = name;
-            ToHit = to_hit;
+            ToHit = toHit;
             Damage = damage;
             ArmorClass = ac;
             CostMultiplier = costmod;
@@ -59,12 +55,14 @@ namespace WOX_Info.Items
 
         Armor IArmorModifier.Apply(Armor armor)
         {
-            Armor new_armor = new Armor(armor);
-            new_armor.Name = Name + " " + armor.Name;
-            new_armor.ArmorClass = armor.ArmorClass + ArmorClass;
-            new_armor.Cost = armor.Cost * CostMultiplier;
+            var newArmor = new Armor(armor)
+            {
+                Name = Name + " " + armor.Name,
+                ArmorClass = armor.ArmorClass + ArmorClass,
+                Cost = armor.Cost * CostMultiplier
+            };
 
-            return new_armor;
+            return newArmor;
         }
     }
 }
