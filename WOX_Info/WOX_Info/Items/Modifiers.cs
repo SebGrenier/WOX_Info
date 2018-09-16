@@ -103,4 +103,76 @@ namespace WOX_Info.Items
             return collection;
         }
     }
+
+    public class Elemental : IArmorModifier, IWeaponModifier, IMiscellaneousModifier
+    {
+        public enum ElementType
+        {
+            Fire,
+            Electric,
+            Cold,
+            AcidPoison,
+            Energy,
+            Magic
+        }
+
+        public Elemental(string name, int resistance, int damage, ElementType type)
+        {
+            Name = name;
+            Resistance = resistance;
+            Damage = damage;
+            Type = type;
+        }
+
+        public string Name { get; }
+        public int Resistance { get; }
+        public int Damage { get; }
+        public ElementType Type { get; }
+
+        public string ApplyName(string baseName)
+        {
+            return $"{Name} {baseName}";
+        }
+
+        public double ApplyCost(double baseCost)
+        {
+            return baseCost;
+        }
+
+        List<ListViewItem> IWeaponModifier.ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+            var damageItem = new ListViewItem(new[] { Type.ToString(), Damage.ToString(CultureInfo.InvariantCulture) });
+            collection.Add(damageItem);
+            return collection;
+        }
+
+        public int ApplyMinDamage(int baseMinDamage)
+        {
+            return baseMinDamage + Damage;
+        }
+
+        public int ApplyMaxDamage(int baseMaxDamage)
+        {
+            return baseMaxDamage + Damage;
+        }
+
+        List<ListViewItem> IArmorModifier.ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+            var resistanceItem = new ListViewItem(new[] { Type.ToString(), Resistance.ToString(CultureInfo.InvariantCulture) });
+            collection.Add(resistanceItem);
+            return collection;
+        }
+
+        public int ApplyAc(int baseAc)
+        {
+            return baseAc;
+        }
+
+        List<ListViewItem> IModifier.ToListViewItems()
+        {
+            return new List<ListViewItem>();
+        }
+    }
 }

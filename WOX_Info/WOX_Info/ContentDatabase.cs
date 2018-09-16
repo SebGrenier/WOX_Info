@@ -136,6 +136,7 @@ namespace WOX_Info
         {
             WOXModifiers = new List<IModifier>();
             InitWOXMetalsModifiers();
+            InitWOXElementalModifiers();
         }
 
         private void InitWOXMetalsModifiers()
@@ -166,6 +167,50 @@ namespace WOX_Info
                 new Metal("Obsidian", 10, 50, 20, 100, Metal.MetalType.Precious)
             };
             WOXModifiers.AddRange(metals);
+        }
+
+        private void InitWOXElementalModifiers()
+        {
+            var elements = new List<Elemental>
+            {
+                new Elemental("Burning", 5, 2, Elemental.ElementType.Fire),
+                new Elemental("Fiery", 7, 3, Elemental.ElementType.Fire),
+                new Elemental("Pyric", 9, 4, Elemental.ElementType.Fire),
+                new Elemental("Fuming", 12, 5, Elemental.ElementType.Fire),
+                new Elemental("Flaming", 15, 10, Elemental.ElementType.Fire),
+                new Elemental("Seething", 20, 15, Elemental.ElementType.Fire),
+                new Elemental("Blazing", 25, 20, Elemental.ElementType.Fire),
+                new Elemental("Scorching", 30, 30, Elemental.ElementType.Fire),
+                new Elemental("Flickering", 5, 2, Elemental.ElementType.Electric),
+                new Elemental("Sparking", 7, 3, Elemental.ElementType.Electric),
+                new Elemental("Static", 9, 4, Elemental.ElementType.Electric),
+                new Elemental("Flashing", 12, 5, Elemental.ElementType.Electric),
+                new Elemental("Shocking", 15, 10, Elemental.ElementType.Electric),
+                new Elemental("Electric", 20, 15, Elemental.ElementType.Electric),
+                new Elemental("Dyna", 25, 20, Elemental.ElementType.Electric),
+                new Elemental("Icy", 5, 2, Elemental.ElementType.Cold),
+                new Elemental("Frost", 10, 4, Elemental.ElementType.Cold),
+                new Elemental("Freezing", 15, 5, Elemental.ElementType.Cold),
+                new Elemental("Cold", 20, 10, Elemental.ElementType.Cold),
+                new Elemental("Cryo", 25, 20, Elemental.ElementType.Cold),
+                new Elemental("Acidic", 10, 2, Elemental.ElementType.AcidPoison),
+                new Elemental("Venomous", 15, 4, Elemental.ElementType.AcidPoison),
+                new Elemental("Poisonous", 20, 8, Elemental.ElementType.AcidPoison),
+                new Elemental("Toxic", 25, 16, Elemental.ElementType.AcidPoison),
+                new Elemental("Noxious", 40, 32, Elemental.ElementType.AcidPoison),
+                new Elemental("Glowing", 5, 2, Elemental.ElementType.Energy),
+                new Elemental("Incandescent", 7, 3, Elemental.ElementType.Energy),
+                new Elemental("Dense", 9, 4, Elemental.ElementType.Energy),
+                new Elemental("Sonic", 11, 5, Elemental.ElementType.Energy),
+                new Elemental("Power", 13, 10, Elemental.ElementType.Energy),
+                new Elemental("Thermal", 15, 15, Elemental.ElementType.Energy),
+                new Elemental("Radiating", 20, 20, Elemental.ElementType.Energy),
+                new Elemental("Kinetic", 25, 30, Elemental.ElementType.Energy),
+                new Elemental("Mystic", 5, 5, Elemental.ElementType.Magic),
+                new Elemental("Magical", 10, 10, Elemental.ElementType.Magic),
+                new Elemental("Ectoplasmic", 20, 25, Elemental.ElementType.Magic)
+            };
+            WOXModifiers.AddRange(elements);
         }
     }
 }
