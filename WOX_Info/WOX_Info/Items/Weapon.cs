@@ -34,9 +34,18 @@ namespace WOX_Info.Items
             : base(name, cost, allowedClasses)
         {
             DiceType = diceType;
+            EquipType = equipType;
+        }
+
+        public Weapon(Weapon other)
+            : base(other)
+        {
+            DiceType = other.DiceType;
+            EquipType = other.EquipType;
         }
 
         public DiceType DiceType { get; }
+        public EquipType EquipType { get; }
 
         public int MinDamage
         {

@@ -20,8 +20,10 @@ namespace WOX_Info
         private void InitWOXDatabase()
         {
             InitWOXClasses();
-            InitWOXItems();
+
+            // Init modifiers before the items!
             InitWOXModifiers();
+            InitWOXItems();
         }
 
         private void InitWOXClasses()
@@ -68,6 +70,15 @@ namespace WOX_Info
                 new Armor("Belt", 0, 100, ClassType.All)
             };
             WOXBaseItems.AddRange(armors);
+
+            foreach (var modifier in WOXModifiers)
+            {
+                foreach (var baseArmor in armors)
+                {
+                    var newArmor = new Armor(baseArmor) {Modifier = modifier};
+                    WOXBaseItems.Add(newArmor);
+                }
+            }
         }
 
         private void InitWOXWeapons()
@@ -94,6 +105,15 @@ namespace WOX_Info
                 new Weapon("Spear", new DiceType(1, 9), 15, EquipType.Onehand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric)),
             };
             WOXBaseItems.AddRange(weapons);
+
+            foreach (var modifier in WOXModifiers)
+            {
+                foreach (var baseWeapon in weapons)
+                {
+                    var newWeapon = new Weapon(baseWeapon) { Modifier = modifier };
+                    WOXBaseItems.Add(newWeapon);
+                }
+            }
         }
 
         private void InitWOXModifiers()
