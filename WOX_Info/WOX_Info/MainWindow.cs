@@ -49,6 +49,9 @@ namespace WOX_Info
             _armor_panel_listview.View = View.Details;
             _armor_panel_listview.Columns.Add("Stat");
             _armor_panel_listview.Columns.Add("Value");
+
+            // Init first value in listview
+            HandleDropDownSelectedChanged(_armor_panel_dropdown, _armor_panel_listview);
         }
 
         private void InitializeWeaponTab()
@@ -63,6 +66,9 @@ namespace WOX_Info
             _weapon_panel_listview.View = View.Details;
             _weapon_panel_listview.Columns.Add("Stat");
             _weapon_panel_listview.Columns.Add("Value");
+
+            // Init first value in listview
+            HandleDropDownSelectedChanged(_weapon_panel_dropdown, _weapon_panel_listview);
         }
 
         private void InitializeAccessoriesTab()
@@ -77,6 +83,9 @@ namespace WOX_Info
             _accessories_panel_listview.View = View.Details;
             _accessories_panel_listview.Columns.Add("Stat");
             _accessories_panel_listview.Columns.Add("Value");
+
+            // Init first value in listview
+            HandleDropDownSelectedChanged(_accessories_panel_dropdown, _accessories_panel_listview);
         }
 
         private void HandleDropDownSelectedChanged(ComboBox dropdown, ListView listView)
