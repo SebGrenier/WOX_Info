@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using WOX_Info.Classes;
 using WOX_Info.Items;
 
@@ -33,6 +34,7 @@ namespace WOX_Info
         {
             InitializeArmorTab();
             InitializeWeaponTab();
+            InitializeAccessoriesTab();
         }
 
         private void InitializeArmorTab()
@@ -41,12 +43,12 @@ namespace WOX_Info
             var armors = _content_database.WOXBaseItems.OfType<Armor>().ToList();
             _armor_panel_dropdown.DataSource = armors;
             _armor_panel_dropdown.DisplayMember = "Name";
-            _armor_panel_dropdown.SelectedIndexChanged += HandleArmorTabSelectedArmorChanged;
+            _armor_panel_dropdown.SelectedIndexChanged += (object sender, EventArgs args) => HandleDropDownSelectedChanged(_armor_panel_dropdown, _armor_panel_listview);
 
             // Armor listview
-            _armor_panel_list_view.View = View.Details;
-            _armor_panel_list_view.Columns.Add("Stat");
-            _armor_panel_list_view.Columns.Add("Value");
+            _armor_panel_listview.View = View.Details;
+            _armor_panel_listview.Columns.Add("Stat");
+            _armor_panel_listview.Columns.Add("Value");
         }
 
         private void InitializeWeaponTab()
@@ -55,33 +57,37 @@ namespace WOX_Info
             var weapons = _content_database.WOXBaseItems.OfType<Weapon>().ToList();
             _weapon_panel_dropdown.DataSource = weapons;
             _weapon_panel_dropdown.DisplayMember = "Name";
-            _weapon_panel_dropdown.SelectedIndexChanged += HandleWeaponTabSelectedWeaponChanged;
+            _weapon_panel_dropdown.SelectedIndexChanged += (object sender, EventArgs args) => HandleDropDownSelectedChanged(_weapon_panel_dropdown, _weapon_panel_listview);
 
             // Weapon listview
-            _weapon_panel_list_view.View = View.Details;
-            _weapon_panel_list_view.Columns.Add("Stat");
-            _weapon_panel_list_view.Columns.Add("Value");
+            _weapon_panel_listview.View = View.Details;
+            _weapon_panel_listview.Columns.Add("Stat");
+            _weapon_panel_listview.Columns.Add("Value");
         }
 
-        private void HandleArmorTabSelectedArmorChanged(object sender, EventArgs args)
+        private void InitializeAccessoriesTab()
         {
-            _armor_panel_list_view.Items.Clear();
-            if (_armor_panel_dropdown.SelectedItem is Armor selectedItem)
+            // Weapon dropdown
+            var accessories = _content_database.WOXBaseItems.OfType<Accessory>().ToList();
+            _accessories_panel_dropdown.DataSource = accessories;
+            _accessories_panel_dropdown.DisplayMember = "Name";
+            _accessories_panel_dropdown.SelectedIndexChanged += (object sender, EventArgs args) => HandleDropDownSelectedChanged(_accessories_panel_dropdown, _accessories_panel_listview);
+
+            // Weapon listview
+            _accessories_panel_listview.View = View.Details;
+            _accessories_panel_listview.Columns.Add("Stat");
+            _accessories_panel_listview.Columns.Add("Value");
+        }
+
+        private void HandleDropDownSelectedChanged(ComboBox dropdown, ListView listView)
+        {
+            listView.Items.Clear();
+            if (dropdown.SelectedItem is BaseItem selectedItem)
             {
-                _armor_panel_list_view.Items.AddRange(selectedItem.ToListViewItems().ToArray());
+                listView.Items.AddRange(selectedItem.ToListViewItems().ToArray());
             }
         }
 
-        private void HandleWeaponTabSelectedWeaponChanged(object sender, EventArgs eventArgs)
-        {
-            _weapon_panel_list_view.Items.Clear();
-            if (_weapon_panel_dropdown.SelectedItem is Weapon selectedItem)
-            {
-                _weapon_panel_list_view.Items.AddRange(selectedItem.ToListViewItems().ToArray());
-            }
-        }
 
-        
-        
     }
 }

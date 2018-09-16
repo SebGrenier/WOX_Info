@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Classes\Classes.cs" />
     <Compile Include="ContentDatabase.cs" />
+    <Compile Include="Items\Accessory.cs" />
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\BaseItem.cs" />
     <Compile Include="Items\Modifiers.cs" />

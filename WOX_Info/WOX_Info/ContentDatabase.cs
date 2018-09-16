@@ -48,6 +48,7 @@ namespace WOX_Info
             WOXBaseItems = new List<BaseItem>();
             InitWOXArmors();
             InitWOXWeapons();
+            InitWOXAccessories();
         }
 
         private void InitWOXArmors()
@@ -137,6 +138,7 @@ namespace WOX_Info
             WOXModifiers = new List<IModifier>();
             InitWOXMetalsModifiers();
             InitWOXElementalModifiers();
+            InitWOXAttributeModifiers();
         }
 
         private void InitWOXMetalsModifiers()
@@ -211,6 +213,112 @@ namespace WOX_Info
                 new Elemental("Ectoplasmic", 20, 25, Elemental.ElementType.Magic)
             };
             WOXModifiers.AddRange(elements);
+        }
+
+        private void InitWOXAttributeModifiers()
+        {
+            var attributes = new List<Attribute>
+            {
+                new Attribute("Might", 2, Attribute.AttributeType.Might),
+                new Attribute("Strenght", 3, Attribute.AttributeType.Might),
+                new Attribute("Warrior", 5, Attribute.AttributeType.Might),
+                new Attribute("Ogre", 8, Attribute.AttributeType.Might),
+                new Attribute("Giant", 12, Attribute.AttributeType.Might),
+                new Attribute("Thunder", 17, Attribute.AttributeType.Might),
+                new Attribute("Force", 23, Attribute.AttributeType.Might),
+                new Attribute("Power", 30, Attribute.AttributeType.Might),
+                new Attribute("Dragon", 38, Attribute.AttributeType.Might),
+                new Attribute("Photon", 47, Attribute.AttributeType.Might),
+                new Attribute("Clever", 2, Attribute.AttributeType.Intellect),
+                new Attribute("Mind", 3, Attribute.AttributeType.Intellect),
+                new Attribute("Sage", 5, Attribute.AttributeType.Intellect),
+                new Attribute("Thought", 8, Attribute.AttributeType.Intellect),
+                new Attribute("Knowledge", 12, Attribute.AttributeType.Intellect),
+                new Attribute("Intellect", 17, Attribute.AttributeType.Intellect),
+                new Attribute("Wisdom", 23, Attribute.AttributeType.Intellect),
+                new Attribute("Genius", 30, Attribute.AttributeType.Intellect),
+                new Attribute("Buddy", 2, Attribute.AttributeType.Personality),
+                new Attribute("Friendship", 3, Attribute.AttributeType.Personality),
+                new Attribute("Charm", 5, Attribute.AttributeType.Personality),
+                new Attribute("Personality", 8, Attribute.AttributeType.Personality),
+                new Attribute("Charisma", 12, Attribute.AttributeType.Personality),
+                new Attribute("Leadership", 17, Attribute.AttributeType.Personality),
+                new Attribute("Ego", 23, Attribute.AttributeType.Personality),
+                new Attribute("Holy", 30, Attribute.AttributeType.Personality),
+                new Attribute("Quick", 2, Attribute.AttributeType.Speed),
+                new Attribute("Swift", 3, Attribute.AttributeType.Speed),
+                new Attribute("Fast", 5, Attribute.AttributeType.Speed),
+                new Attribute("Rapid", 8, Attribute.AttributeType.Speed),
+                new Attribute("Speed", 12, Attribute.AttributeType.Speed),
+                new Attribute("Wind", 17, Attribute.AttributeType.Speed),
+                new Attribute("Accelerator", 23, Attribute.AttributeType.Speed),
+                new Attribute("Velocity", 30, Attribute.AttributeType.Speed),
+                new Attribute("Sharp", 3, Attribute.AttributeType.Accuracy),
+                new Attribute("Accurate", 5, Attribute.AttributeType.Accuracy),
+                new Attribute("Marskman", 10, Attribute.AttributeType.Accuracy),
+                new Attribute("Precision", 15, Attribute.AttributeType.Accuracy),
+                new Attribute("True", 20, Attribute.AttributeType.Accuracy),
+                new Attribute("Exacto", 30, Attribute.AttributeType.Accuracy),
+                new Attribute("Clover", 5, Attribute.AttributeType.Luck),
+                new Attribute("Chance", 10, Attribute.AttributeType.Luck),
+                new Attribute("Winner", 15, Attribute.AttributeType.Luck),
+                new Attribute("Luck", 20, Attribute.AttributeType.Luck),
+                new Attribute("Gamblers", 25, Attribute.AttributeType.Luck),
+                new Attribute("Leprechauns", 30, Attribute.AttributeType.Luck),
+                new Attribute("Vigor", 4, Attribute.AttributeType.HitPoint),
+                new Attribute("Health", 6, Attribute.AttributeType.HitPoint),
+                new Attribute("Life", 10, Attribute.AttributeType.HitPoint),
+                new Attribute("Troll", 20, Attribute.AttributeType.HitPoint),
+                new Attribute("Vampiric", 50, Attribute.AttributeType.HitPoint),
+                new Attribute("Spell", 4, Attribute.AttributeType.SpellPoint),
+                new Attribute("Castors", 8, Attribute.AttributeType.SpellPoint),
+                new Attribute("Witch", 12, Attribute.AttributeType.SpellPoint),
+                new Attribute("Mage", 16, Attribute.AttributeType.SpellPoint),
+                new Attribute("Archmage", 20, Attribute.AttributeType.SpellPoint),
+                new Attribute("Arcane", 25, Attribute.AttributeType.SpellPoint),
+                new Attribute("Protection", 2, Attribute.AttributeType.ArmorClass),
+                new Attribute("Armored", 4, Attribute.AttributeType.ArmorClass),
+                new Attribute("Defender", 6, Attribute.AttributeType.ArmorClass),
+                new Attribute("Stealth", 10, Attribute.AttributeType.ArmorClass),
+                new Attribute("Divine", 16, Attribute.AttributeType.ArmorClass),
+                new Attribute("Mugger", 4, Attribute.AttributeType.Thievery),
+                new Attribute("Burglar", 6, Attribute.AttributeType.Thievery),
+                new Attribute("Looter", 8, Attribute.AttributeType.Thievery),
+                new Attribute("Brigand", 10, Attribute.AttributeType.Thievery),
+                new Attribute("Filch", 12, Attribute.AttributeType.Thievery),
+                new Attribute("Thief", 14, Attribute.AttributeType.Thievery),
+                new Attribute("Rogue", 16, Attribute.AttributeType.Thievery),
+                new Attribute("Plunderer", 18, Attribute.AttributeType.Thievery),
+                new Attribute("Criminal", 20, Attribute.AttributeType.Thievery),
+                new Attribute("Pirate", 25, Attribute.AttributeType.Thievery),
+            };
+            WOXModifiers.AddRange(attributes);
+        }
+
+        private void InitWOXAccessories()
+        {
+            var accessories = new List<Accessory>
+            {
+                new Accessory("Broach", 250, 2, ClassType.All),
+                new Accessory("Medal", 100, 2, ClassType.All),
+                new Accessory("Charm", 50, 2, ClassType.All),
+                new Accessory("Cameo", 300, 2, ClassType.All),
+                new Accessory("Scarab", 200, 2, ClassType.All),
+                new Accessory("Pendant", 500, 1, ClassType.All),
+                new Accessory("Necklace", 1000, 1, ClassType.All),
+                new Accessory("Amulet", 2000, 1, ClassType.All),
+                new Accessory("Ring", 100, 2, ClassType.All),
+            };
+            WOXBaseItems.AddRange(accessories);
+
+            foreach (var modifier in WOXModifiers)
+            {
+                foreach (var baseAccessory in accessories)
+                {
+                    var newAccessory = new Accessory(baseAccessory) { Modifier = modifier };
+                    WOXBaseItems.Add(newAccessory);
+                }
+            }
         }
     }
 }

@@ -29,11 +29,12 @@ namespace WOX_Info.Items
         new List<ListViewItem> ToListViewItems();
     }
 
-    public interface IMiscellaneousModifier : IModifier
+    public interface IAccessoryModifier : IModifier
     {
+        new List<ListViewItem> ToListViewItems();
     }
 
-    public class Metal : IArmorModifier, IWeaponModifier
+    public class Metal : IArmorModifier, IWeaponModifier, IAccessoryModifier
     {
         public enum MetalType
         {
@@ -102,9 +103,14 @@ namespace WOX_Info.Items
             collection.Add(toHit);
             return collection;
         }
+
+        List<ListViewItem> IAccessoryModifier.ToListViewItems()
+        {
+            return new List<ListViewItem>();
+        }
     }
 
-    public class Elemental : IArmorModifier, IWeaponModifier, IMiscellaneousModifier
+    public class Elemental : IArmorModifier, IWeaponModifier, IAccessoryModifier
     {
         public enum ElementType
         {
@@ -173,6 +179,97 @@ namespace WOX_Info.Items
         List<ListViewItem> IModifier.ToListViewItems()
         {
             return new List<ListViewItem>();
+        }
+
+        List<ListViewItem> IAccessoryModifier.ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+            var resistanceItem = new ListViewItem(new[] { Type.ToString(), Resistance.ToString(CultureInfo.InvariantCulture) });
+            collection.Add(resistanceItem);
+            return collection;
+        }
+    }
+
+    public class Attribute : IArmorModifier, IWeaponModifier, IAccessoryModifier
+    {
+        public enum AttributeType
+        {
+            Might,
+            Intellect,
+            Personality,
+            Speed,
+            Accuracy,
+            Luck,
+            HitPoint,
+            SpellPoint,
+            ArmorClass,
+            Thievery
+        }
+
+        public Attribute(string name, int bonus, AttributeType type)
+        {
+            Name = name;
+            Bonus = bonus;
+            Type = type;
+        }
+
+        public string Name { get; }
+        public int Bonus { get; }
+        public AttributeType Type { get; }
+
+        public string ApplyName(string baseName)
+        {
+            return $"{Name} {baseName}";
+        }
+
+        public double ApplyCost(double baseCost)
+        {
+            return baseCost;
+        }
+
+        List<ListViewItem> IWeaponModifier.ToListViewItems()
+        {
+            return CommonListViewItems();
+        }
+
+        public int ApplyMinDamage(int baseMinDamage)
+        {
+            return baseMinDamage;
+        }
+
+        public int ApplyMaxDamage(int baseMaxDamage)
+        {
+            return baseMaxDamage;
+        }
+
+        List<ListViewItem> IArmorModifier.ToListViewItems()
+        {
+            return CommonListViewItems();
+        }
+
+        public int ApplyAc(int baseAc)
+        {
+            if (Type == AttributeType.ArmorClass)
+                return baseAc + Bonus;
+            return baseAc;
+        }
+
+        List<ListViewItem> IModifier.ToListViewItems()
+        {
+            return CommonListViewItems();
+        }
+
+        List<ListViewItem> IAccessoryModifier.ToListViewItems()
+        {
+            return CommonListViewItems();
+        }
+
+        private List<ListViewItem> CommonListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+            var item = new ListViewItem(new[] { Type.ToString(), Bonus.ToString(CultureInfo.InvariantCulture) });
+            collection.Add(item);
+            return collection;
         }
     }
 }
