@@ -1,4 +1,7 @@
 ﻿
+using System.Collections.Generic;
+using System.Globalization;
+using System.Windows.Forms;
 using WOX_Info.Classes;
 
 namespace WOX_Info.Items
@@ -51,6 +54,22 @@ namespace WOX_Info.Items
                 var weaponModifier = Modifier as IWeaponModifier;
                 return weaponModifier?.ApplyMaxDamage(DiceType.MaxDamage) ?? DiceType.MaxDamage;
             }
+        }
+
+        public override List<ListViewItem> ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+
+            var minDamageItem = new ListViewItem(new[] { "Min Damage", MinDamage.ToString(CultureInfo.InvariantCulture) });
+            collection.Add(minDamageItem);
+            var maxDamageItem = new ListViewItem(new[] { "Max Damage", MaxDamage.ToString(CultureInfo.InvariantCulture) });
+            collection.Add(maxDamageItem);
+
+            collection.AddRange(base.ToListViewItems());
+
+            if (Modifier is IWeaponModifier weaponModifier) collection.AddRange(weaponModifier.ToListViewItems());
+
+            return collection;
         }
     }
 }

@@ -33,11 +33,17 @@
             this._armor_panel_select_label = new System.Windows.Forms.Label();
             this._armor_panel_dropdown = new System.Windows.Forms.ComboBox();
             this._weapon_panel = new System.Windows.Forms.TabPage();
-            this._weapon_panel_select_label = new System.Windows.Forms.Label();
             this._weapon_panel_dropdown = new System.Windows.Forms.ComboBox();
+            this._weapon_panel_select_label = new System.Windows.Forms.Label();
+            this._armor_panel_stats_box = new System.Windows.Forms.GroupBox();
+            this._armor_panel_list_view = new System.Windows.Forms.ListView();
+            this._weapon_panel_stats_box = new System.Windows.Forms.GroupBox();
+            this._weapon_panel_list_view = new System.Windows.Forms.ListView();
             this._tab_panel.SuspendLayout();
             this._armor_panel.SuspendLayout();
             this._weapon_panel.SuspendLayout();
+            this._armor_panel_stats_box.SuspendLayout();
+            this._weapon_panel_stats_box.SuspendLayout();
             this.SuspendLayout();
             // 
             // _tab_panel
@@ -54,6 +60,7 @@
             // _armor_panel
             // 
             this._armor_panel.BackColor = System.Drawing.Color.Transparent;
+            this._armor_panel.Controls.Add(this._armor_panel_stats_box);
             this._armor_panel.Controls.Add(this._armor_panel_select_label);
             this._armor_panel.Controls.Add(this._armor_panel_dropdown);
             this._armor_panel.Location = new System.Drawing.Point(4, 22);
@@ -85,6 +92,7 @@
             // _weapon_panel
             // 
             this._weapon_panel.BackColor = System.Drawing.Color.Transparent;
+            this._weapon_panel.Controls.Add(this._weapon_panel_stats_box);
             this._weapon_panel.Controls.Add(this._weapon_panel_dropdown);
             this._weapon_panel.Controls.Add(this._weapon_panel_select_label);
             this._weapon_panel.Location = new System.Drawing.Point(4, 22);
@@ -93,15 +101,6 @@
             this._weapon_panel.Size = new System.Drawing.Size(354, 258);
             this._weapon_panel.TabIndex = 1;
             this._weapon_panel.Text = "Weapons";
-            // 
-            // _weapon_panel_select_label
-            // 
-            this._weapon_panel_select_label.AutoSize = true;
-            this._weapon_panel_select_label.Location = new System.Drawing.Point(8, 3);
-            this._weapon_panel_select_label.Name = "_weapon_panel_select_label";
-            this._weapon_panel_select_label.Size = new System.Drawing.Size(87, 13);
-            this._weapon_panel_select_label.TabIndex = 0;
-            this._weapon_panel_select_label.Text = "Select Weapon :";
             // 
             // _weapon_panel_dropdown
             // 
@@ -112,6 +111,51 @@
             this._weapon_panel_dropdown.Name = "_weapon_panel_dropdown";
             this._weapon_panel_dropdown.Size = new System.Drawing.Size(121, 21);
             this._weapon_panel_dropdown.TabIndex = 1;
+            // 
+            // _weapon_panel_select_label
+            // 
+            this._weapon_panel_select_label.AutoSize = true;
+            this._weapon_panel_select_label.Location = new System.Drawing.Point(8, 3);
+            this._weapon_panel_select_label.Name = "_weapon_panel_select_label";
+            this._weapon_panel_select_label.Size = new System.Drawing.Size(87, 13);
+            this._weapon_panel_select_label.TabIndex = 0;
+            this._weapon_panel_select_label.Text = "Select Weapon :";
+            // 
+            // _armor_panel_stats_box
+            // 
+            this._armor_panel_stats_box.Controls.Add(this._armor_panel_list_view);
+            this._armor_panel_stats_box.Location = new System.Drawing.Point(11, 47);
+            this._armor_panel_stats_box.Name = "_armor_panel_stats_box";
+            this._armor_panel_stats_box.Size = new System.Drawing.Size(335, 203);
+            this._armor_panel_stats_box.TabIndex = 2;
+            this._armor_panel_stats_box.TabStop = false;
+            this._armor_panel_stats_box.Text = "Stats";
+            // 
+            // _armor_panel_list_view
+            // 
+            this._armor_panel_list_view.Location = new System.Drawing.Point(7, 20);
+            this._armor_panel_list_view.Name = "_armor_panel_list_view";
+            this._armor_panel_list_view.Size = new System.Drawing.Size(322, 177);
+            this._armor_panel_list_view.TabIndex = 0;
+            this._armor_panel_list_view.UseCompatibleStateImageBehavior = false;
+            // 
+            // _weapon_panel_stats_box
+            // 
+            this._weapon_panel_stats_box.Controls.Add(this._weapon_panel_list_view);
+            this._weapon_panel_stats_box.Location = new System.Drawing.Point(11, 47);
+            this._weapon_panel_stats_box.Name = "_weapon_panel_stats_box";
+            this._weapon_panel_stats_box.Size = new System.Drawing.Size(335, 203);
+            this._weapon_panel_stats_box.TabIndex = 2;
+            this._weapon_panel_stats_box.TabStop = false;
+            this._weapon_panel_stats_box.Text = "Stats";
+            // 
+            // _weapon_panel_list_view
+            // 
+            this._weapon_panel_list_view.Location = new System.Drawing.Point(7, 20);
+            this._weapon_panel_list_view.Name = "_weapon_panel_list_view";
+            this._weapon_panel_list_view.Size = new System.Drawing.Size(322, 177);
+            this._weapon_panel_list_view.TabIndex = 0;
+            this._weapon_panel_list_view.UseCompatibleStateImageBehavior = false;
             // 
             // MainWindow
             // 
@@ -126,6 +170,8 @@
             this._armor_panel.PerformLayout();
             this._weapon_panel.ResumeLayout(false);
             this._weapon_panel.PerformLayout();
+            this._armor_panel_stats_box.ResumeLayout(false);
+            this._weapon_panel_stats_box.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -139,6 +185,10 @@
         private System.Windows.Forms.ComboBox _armor_panel_dropdown;
         private System.Windows.Forms.Label _weapon_panel_select_label;
         private System.Windows.Forms.ComboBox _weapon_panel_dropdown;
+        private System.Windows.Forms.GroupBox _armor_panel_stats_box;
+        private System.Windows.Forms.ListView _armor_panel_list_view;
+        private System.Windows.Forms.GroupBox _weapon_panel_stats_box;
+        private System.Windows.Forms.ListView _weapon_panel_list_view;
     }
 }
 

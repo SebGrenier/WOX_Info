@@ -1,4 +1,7 @@
-﻿using WOX_Info.Classes;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Windows.Forms;
+using WOX_Info.Classes;
 
 namespace WOX_Info.Items
 {
@@ -25,6 +28,20 @@ namespace WOX_Info.Items
                 var armorModifier = Modifier as IArmorModifier;
                 return armorModifier?.ApplyAc(_armorClass) ?? _armorClass;
             }
+        }
+
+        public override List<ListViewItem> ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+
+            var armorItem = new ListViewItem(new []{"AC", ArmorClass.ToString(CultureInfo.InvariantCulture)});
+            collection.Add(armorItem);
+
+            collection.AddRange(base.ToListViewItems());
+
+            if (Modifier is IArmorModifier armorModifier) collection.AddRange(armorModifier.ToListViewItems());
+
+            return collection;
         }
     }
 }

@@ -1,4 +1,8 @@
 ﻿
+using System.Collections.Generic;
+using System.Globalization;
+using System.Windows.Forms;
+
 namespace WOX_Info.Items
 {
     public interface IModifier
@@ -8,17 +12,21 @@ namespace WOX_Info.Items
         string ApplyName(string baseName);
 
         double ApplyCost(double baseCost);
+
+        List<ListViewItem> ToListViewItems();
     }
 
     public interface IWeaponModifier : IModifier
     {
         int ApplyMinDamage(int baseMinDamage);
         int ApplyMaxDamage(int baseMaxDamage);
+        new List<ListViewItem> ToListViewItems();
     }
 
     public interface IArmorModifier : IModifier
     {
         int ApplyAc(int baseAc);
+        new List<ListViewItem> ToListViewItems();
     }
 
     public interface IMiscellaneousModifier : IModifier
@@ -74,6 +82,25 @@ namespace WOX_Info.Items
         public int ApplyMaxDamage(int baseMaxDamage)
         {
             return Damage + baseMaxDamage;
+        }
+
+        public List<ListViewItem> ToListViewItems()
+        {
+            return new List<ListViewItem>();
+        }
+
+        List<ListViewItem> IArmorModifier.ToListViewItems()
+        {
+            // Armor don't have special modifiers to display
+            return new List<ListViewItem>();
+        }
+
+        List<ListViewItem> IWeaponModifier.ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+            var toHit = new ListViewItem(new []{"ToHit", ToHit.ToString(CultureInfo.InvariantCulture)});
+            collection.Add(toHit);
+            return collection;
         }
     }
 }

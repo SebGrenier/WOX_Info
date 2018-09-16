@@ -1,4 +1,7 @@
-﻿using WOX_Info.Classes;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Windows.Forms;
+using WOX_Info.Classes;
 
 namespace WOX_Info.Items
 {
@@ -28,5 +31,15 @@ namespace WOX_Info.Items
 
         public ClassType AllowedClasses { get; set; }
         public IModifier Modifier { get; set; }
+
+        public virtual List<ListViewItem> ToListViewItems()
+        {
+            var collection = new List<ListViewItem>();
+
+            var costItem = new ListViewItem(new []{"Cost", Cost.ToString(CultureInfo.InvariantCulture)});
+            collection.Add(costItem);
+
+            return collection;
+        }
     }
 }
