@@ -49,6 +49,7 @@
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\BaseItem.cs" />
     <Compile Include="Items\Modifiers.cs" />
+    <Compile Include="Items\Weapon.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

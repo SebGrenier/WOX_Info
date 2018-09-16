@@ -45,6 +45,7 @@ namespace WOX_Info
         {
             WOXBaseItems = new List<BaseItem>();
             InitWOXArmors();
+            InitWOXWeapons();
         }
 
         private void InitWOXArmors()
@@ -58,8 +59,41 @@ namespace WOX_Info
                 new Armor("Splint Mail", 7, 600, ClassType.All ^ (ClassType.Sorcerer | ClassType.Druid | ClassType.Barbarian | ClassType.Ninja | ClassType.Archer | ClassType.Robber)),
                 new Armor("Plate Mail", 8, 1000, ClassType.Paladin | ClassType.Knight),
                 new Armor("Plate Armor", 10, 2000, ClassType.Paladin | ClassType.Knight),
+                new Armor("Cloak", 1, 250, ClassType.All),
+                new Armor("Cape", 1, 200, ClassType.All),
+                new Armor("Shield", 4, 100, ClassType.All ^ (ClassType.Druid | ClassType.Ninja | ClassType.Sorcerer | ClassType.Archer)),
+                new Armor("Helm", 2, 60, ClassType.All),
+                new Armor("Gauntlet", 1, 100, ClassType.All),
+                new Armor("Boots", 1, 40, ClassType.All),
+                new Armor("Belt", 0, 100, ClassType.All)
             };
             WOXBaseItems.AddRange(armors);
+        }
+
+        private void InitWOXWeapons()
+        {
+            var noClDrNS = ClassType.All ^ (ClassType.Cleric | ClassType.Druid | ClassType.Ninja | ClassType.Sorcerer);
+            var weapons = new List<Weapon>
+            {
+                new Weapon("Long Sword", new DiceType(3, 3), 50, EquipType.Onehand, noClDrNS),
+                new Weapon("Short Sword", new DiceType(2, 3), 15, EquipType.Onehand, noClDrNS),
+                new Weapon("Broad Sword", new DiceType(3, 4), 100, EquipType.Onehand, noClDrNS),
+                new Weapon("Scimitar", new DiceType(2, 5), 80, EquipType.Onehand, noClDrNS),
+                new Weapon("Cutlass", new DiceType(2, 4), 40, EquipType.Onehand, noClDrNS),
+                new Weapon("Sabre", new DiceType(4, 2), 60, EquipType.Onehand, noClDrNS),
+                new Weapon("Club", new DiceType(1, 3), 1, EquipType.Onehand, ClassType.All),
+                new Weapon("Hand Axe", new DiceType(2, 3), 10, EquipType.Onehand, ClassType.All ^ (ClassType.Cleric | ClassType.Sorcerer)),
+                new Weapon("Katana", new DiceType(4, 3), 150, EquipType.Onehand, ClassType.Knight | ClassType.Ninja),
+                new Weapon("Nunchakas", new DiceType(2, 3), 30, EquipType.Onehand, ClassType.Knight | ClassType.Ninja),
+                new Weapon("Wakazashi", new DiceType(3, 3), 60, EquipType.Onehand, ClassType.Knight | ClassType.Ninja),
+                new Weapon("Dagger", new DiceType(2, 2), 8, EquipType.Onehand, ClassType.All ^ ClassType.Cleric),
+                new Weapon("Mace", new DiceType(2, 4), 50, EquipType.Onehand, ClassType.All ^ ClassType.Sorcerer),
+                new Weapon("Flail", new DiceType(1, 10), 100, EquipType.Onehand, ClassType.All ^ ClassType.Sorcerer),
+                new Weapon("Cudgel", new DiceType(1, 6), 15, EquipType.Onehand, ClassType.All ^ ClassType.Sorcerer),
+                new Weapon("Maul", new DiceType(1, 8), 30, EquipType.Onehand, ClassType.All ^ ClassType.Sorcerer),
+                new Weapon("Spear", new DiceType(1, 9), 15, EquipType.Onehand, ClassType.All ^ (ClassType.Sorcerer | ClassType.Cleric)),
+            };
+            WOXBaseItems.AddRange(weapons);
         }
 
         private void InitWOXModifiers()

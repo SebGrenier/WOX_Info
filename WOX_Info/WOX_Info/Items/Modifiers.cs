@@ -1,25 +1,28 @@
-﻿using System;
-
+﻿
 namespace WOX_Info.Items
 {
     public interface IModifier
     {
         string Name { get; }
+
+        string ApplyName(string baseName);
+
+        double ApplyCost(double baseCost);
     }
 
     public interface IWeaponModifier : IModifier
     {
-        void Apply();
+        int ApplyMinDamage(int baseMinDamage);
+        int ApplyMaxDamage(int baseMaxDamage);
     }
 
     public interface IArmorModifier : IModifier
     {
-        Armor Apply(Armor armor);
+        int ApplyAc(int baseAc);
     }
 
     public interface IMiscellaneousModifier : IModifier
     {
-        void Apply();
     }
 
     public class Metal : IArmorModifier, IWeaponModifier
@@ -48,21 +51,29 @@ namespace WOX_Info.Items
             Type = type;
         }
 
-        void IWeaponModifier.Apply()
+        public string ApplyName(string baseName)
         {
-            throw new NotImplementedException();
+            return Name + " " + baseName;
         }
 
-        Armor IArmorModifier.Apply(Armor armor)
+        public double ApplyCost(double baseCost)
         {
-            var newArmor = new Armor(armor)
-            {
-                Name = Name + " " + armor.Name,
-                ArmorClass = armor.ArmorClass + ArmorClass,
-                Cost = armor.Cost * CostMultiplier
-            };
+            return baseCost * CostMultiplier;
+        }
 
-            return newArmor;
+        public int ApplyAc(int baseAc)
+        {
+            return baseAc + ArmorClass;
+        }
+        
+        public int ApplyMinDamage(int baseMinDamage)
+        {
+            return Damage + baseMinDamage;
+        }
+
+        public int ApplyMaxDamage(int baseMaxDamage)
+        {
+            return Damage + baseMaxDamage;
         }
     }
 }

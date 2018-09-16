@@ -32,19 +32,36 @@ namespace WOX_Info
         private void InitPanels()
         {
             InitializeArmorTab();
+            InitializeWeaponTab();
         }
 
         private void InitializeArmorTab()
         {
             var armors = _content_database.WOXBaseItems.OfType<Armor>().ToList();
-            _armor_panel_base_armor_box.DataSource = armors;
-            _armor_panel_base_armor_box.DisplayMember = "Name";
-            _armor_panel_base_armor_box.SelectedIndexChanged += HandleArmorTabSelectedArmorChanged;
+            _armor_panel_dropdown.DataSource = armors;
+            _armor_panel_dropdown.DisplayMember = "Name";
+            _armor_panel_dropdown.SelectedIndexChanged += HandleArmorTabSelectedArmorChanged;
+        }
+
+        private void InitializeWeaponTab()
+        {
+            var weapons = _content_database.WOXBaseItems.OfType<Weapon>().ToList();
+            _weapon_panel_dropdown.DataSource = weapons;
+            _weapon_panel_dropdown.DisplayMember = "Name";
+            _weapon_panel_dropdown.SelectedIndexChanged += HandleWeaponTabSelectedWeaponChanged;
         }
 
         private void HandleArmorTabSelectedArmorChanged(object sender, EventArgs args)
         {
 
         }
+
+        private void HandleWeaponTabSelectedWeaponChanged(object sender, EventArgs eventArgs)
+        {
+            
+        }
+
+        
+        
     }
 }

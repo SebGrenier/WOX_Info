@@ -4,18 +4,27 @@ namespace WOX_Info.Items
 {
     public class Armor : BaseItem
     {
-        public int ArmorClass { get; set; }
+        private readonly int _armorClass;
 
         public Armor(string name, int armorClass, double cost, ClassType allowedClasses)
             : base(name, cost, allowedClasses)
         {
-            ArmorClass = armorClass;
+            _armorClass = armorClass;
         }
 
         public Armor(Armor armor)
             : base(armor)
         {
-            ArmorClass = armor.ArmorClass;
+            _armorClass = armor._armorClass;
+        }
+
+        public int ArmorClass
+        {
+            get
+            {
+                var armorModifier = Modifier as IArmorModifier;
+                return armorModifier?.ApplyAc(_armorClass) ?? _armorClass;
+            }
         }
     }
 }

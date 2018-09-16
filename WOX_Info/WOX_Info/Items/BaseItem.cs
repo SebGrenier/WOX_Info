@@ -4,22 +4,29 @@ namespace WOX_Info.Items
 {
     public class BaseItem
     {
-        public string Name { get; set; }
-        public double Cost { get; set; }
-        public ClassType AllowedClasses { get; set; }
+        private readonly string _name;
+        private readonly double _cost;
 
         public BaseItem(string name, double cost, ClassType allowedClasses)
         {
-            Name = name;
-            Cost = cost;
+            _name = name;
+            _cost = cost;
             AllowedClasses = allowedClasses;
+            Modifier = null;
         }
 
         public BaseItem(BaseItem bi)
         {
-            Name = string.Copy(bi.Name);
-            Cost = bi.Cost;
+            _name = string.Copy(bi._name);
+            _cost = bi._cost;
             AllowedClasses = bi.AllowedClasses;
+            Modifier = bi.Modifier;
         }
+
+        public string Name => Modifier?.ApplyName(_name) ?? _name;
+        public double Cost => Modifier?.ApplyCost(_cost) ?? _cost;
+
+        public ClassType AllowedClasses { get; set; }
+        public IModifier Modifier { get; set; }
     }
 }
