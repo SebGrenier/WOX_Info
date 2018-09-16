@@ -8,11 +8,11 @@ namespace WOX_Info.Items
         public double Cost { get; set; }
         public ClassType AllowedClasses { get; set; }
 
-        public BaseItem(string name, double cost, ClassType allowed_classes)
+        public BaseItem(string name, double cost, ClassType allowedClasses)
         {
             Name = name;
             Cost = cost;
-            AllowedClasses = allowed_classes;
+            AllowedClasses = allowedClasses;
         }
 
         public BaseItem(BaseItem bi)

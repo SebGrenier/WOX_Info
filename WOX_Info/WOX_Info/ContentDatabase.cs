@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using WOX_Info.Classes;
 using WOX_Info.Items;
 
@@ -10,29 +6,16 @@ namespace WOX_Info
 {
     public sealed class ContentDatabase
     {
-        private List<Classes.Classes> _wox_classes;
-        private List<BaseItem> _wox_base_items;
-        private List<IModifier> _wox_modifiers;
-
         public ContentDatabase()
         {
             InitWOXDatabase();
         }
 
-        public List<Classes.Classes> WOXClasses
-        {
-            get { return _wox_classes; }
-        }
+        public List<Classes.Classes> WOXClasses { get; private set; }
 
-        public List<BaseItem> WOXBaseItems
-        {
-            get { return _wox_base_items; }
-        }
+        public List<BaseItem> WOXBaseItems { get; private set; }
 
-        public List<IModifier> WOXModifiers
-        {
-            get { return _wox_modifiers; }
-        }
+        public List<IModifier> WOXModifiers { get; private set; }
 
         private void InitWOXDatabase()
         {
@@ -43,7 +26,7 @@ namespace WOX_Info
 
         private void InitWOXClasses()
         {
-            _wox_classes = new List<Classes.Classes>
+            WOXClasses = new List<Classes.Classes>
             {
                 new Classes.Classes("Archer", ClassType.Archer),
                 new Classes.Classes("Barbarian", ClassType.Barbarian),
@@ -60,7 +43,7 @@ namespace WOX_Info
 
         private void InitWOXItems()
         {
-            _wox_base_items = new List<BaseItem>();
+            WOXBaseItems = new List<BaseItem>();
             InitWOXArmors();
         }
 
@@ -76,12 +59,12 @@ namespace WOX_Info
                 new Armor("Plate Mail", 8, 1000, ClassType.Paladin | ClassType.Knight),
                 new Armor("Plate Armor", 10, 2000, ClassType.Paladin | ClassType.Knight),
             };
-            _wox_base_items.AddRange(armors);
+            WOXBaseItems.AddRange(armors);
         }
 
         private void InitWOXModifiers()
         {
-            _wox_modifiers = new List<IModifier>();
+            WOXModifiers = new List<IModifier>();
             InitWOXMetalsModifiers();
         }
 
@@ -112,7 +95,7 @@ namespace WOX_Info
                 new Metal("Diamond", 9, 30, 16, 90, Metal.MetalType.Precious),
                 new Metal("Obsidian", 10, 50, 20, 100, Metal.MetalType.Precious)
             };
-            _wox_modifiers.AddRange(metals);
+            WOXModifiers.AddRange(metals);
         }
     }
 }
