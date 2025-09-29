@@ -131,6 +131,9 @@ namespace WOX_Info
                     WOXBaseItems.Add(newWeapon);
                 }
             }
+
+            var xeenSlayerSword = new Weapon("Xeen Slayer Sword", new DiceType(6, 4), 1, EquipType.Twohand, ClassType.All);
+            WOXBaseItems.Add(xeenSlayerSword);
         }
 
         private void InitWOXModifiers()
